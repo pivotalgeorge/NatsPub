@@ -1,0 +1,9 @@
+applications:
+- name: NatsPub
+  memory: 1G
+  instances: 20
+  buildpack: java_buildpack_offline
+  random-route: true
+  path: target/demo-0.0.1-SNAPSHOT.jar
+  env:
+    NATSAPI: nats://nats:XoAJ6vJX7mzJvFo62DMLT2ApNl7xyA@nats.service.cf.internal:4222
