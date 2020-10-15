@@ -1,7 +1,7 @@
 applications:
 - name: NatsPub
   memory: 1G
-  instances: 20
+  instances: 39
   buildpack: java_buildpack_offline
   random-route: true
   path: target/demo-0.0.1-SNAPSHOT.jar

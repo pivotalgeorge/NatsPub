@@ -13,6 +13,18 @@ public class PubController {
 
     NatsPub natsPub = new NatsPub();
 
+    @RequestMapping(method = RequestMethod.GET, value = "/connect", produces = "application/json")
+    public ResponseEntity<String> connect(){
+        natsPub.connect();
+        return new ResponseEntity<>("ok", HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/disconnect", produces = "application/json")
+    public ResponseEntity<String> disconnect(){
+        natsPub.disconnect();
+        return new ResponseEntity<>("ok", HttpStatus.OK);
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/publish", produces = "application/json")
     public ResponseEntity<String> start(@RequestParam(value = "subject", defaultValue = "HelloWorld") String subject,
                                         @RequestParam(value = "message", defaultValue = "Hello World Message") String message,

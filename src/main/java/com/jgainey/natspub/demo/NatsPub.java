@@ -10,9 +10,8 @@ import java.io.IOException;
 public class NatsPub {
 
     Connection natsConnection;
-    AsyncSubscription subscription;
 
-    public NatsPub() {
+    public void connect() {
         try {
             natsConnection = initConnection();
         } catch (IOException e) {
@@ -20,7 +19,17 @@ public class NatsPub {
         }
     }
 
-    private Connection initConnection() throws IOException {
+    public void disconnect(){
+        if(natsConnection != null){
+            try {
+                natsConnection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public Connection initConnection() throws IOException {
         Options options = new Options.Builder()
                 .errorCb(ex -> Utils.logError("Connection Exception: " + ex))
                 .disconnectedCb(event -> Utils.logError("Channel disconnected: {}" + event.getConnection()))
